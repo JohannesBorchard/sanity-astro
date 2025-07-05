@@ -1,16 +1,45 @@
 ---
+import { sanityClient } from 'sanity:client'
 
+type Post = {
+	title: string
+	publishedAt?: string | null
+	body?: { _type: string; children: { text: unknown }[] }[] | null
+	slug?: { current: string }
+}
+
+const posts = await sanityClient.fetch<Post[]>(`*[_type == "post"] | order(publishedAt desc)`)
 ---
 
-<html lang="en">
+<html lang="de">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>Meine Marketing Site</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>Willkommen auf meiner Website</h1>
+
+		<section>
+			<h2>Neueste Blog Posts</h2>
+			{
+				posts.map((post) => (
+					<article>
+						<h3>{post.title}</h3>
+						{post.publishedAt && (
+							<p>Veröffentlicht: {new Date(post.publishedAt).toLocaleDateString('de-DE')}</p>
+						)}
+						{post.body?.map((block) => {
+							if (block._type === 'block') {
+								return <p>{block.children?.[0]?.text}</p>
+							}
+							return null
+						})}
+						<hr />
+					</article>
+				))
+			}
+		</section>
 	</body>
 </html>
