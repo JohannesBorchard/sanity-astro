@@ -7,11 +7,27 @@
 		"types": ["astro/client"],
 		"jsx": "react-jsx",
 		"allowJs": true,
+
+		/* Linting */
+		"strict": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"erasableSyntaxOnly": true,
+		"noFallthroughCasesInSwitch": true,
+		"noUncheckedSideEffectImports": true,
+
 		"baseUrl": ".",
 		"paths": {
-			"@shared/*": ["../shared/types/*"]
+			"@/*": ["src/*"],
+			"~/*": ["src/*"],
+			"~/app/*": ["src/app/*"],
+			"~/pages/*": ["src/pages/*"],
+			"~/widgets/*": ["src/widgets/*"],
+			"~/features/*": ["src/features/*"],
+			"~/entities/*": ["src/entities/*"],
+			"~/shared/*": ["src/shared/*"]
 		}
 	},
-	"include": ["src", "env.d.ts"],
+	"include": ["src", "env.d.ts", "eslint.config.js", "tsconfig.app.json"],
 	"exclude": ["dist", ".astro"]
 }
