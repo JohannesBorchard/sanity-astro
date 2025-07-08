@@ -1,6 +1,11 @@
 export type Post = {
 	title: string
+	publishedAt?: string | null
 	slug?: { current: string }
-	publishedAt?: string
-	body?: unknown
+	body?: {
+		_type: string
+		children?: {
+			text: string
+		}[]
+	}[]
 }
