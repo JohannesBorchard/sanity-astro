@@ -45,3 +45,8 @@ All commands are run from the root of the project, from a terminal:
 ## 👀 Want to learn more?
 
 Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+
+## Sicherheitshinweis
+
+Bekannte `npm audit`-Warnungen in Abhängigkeiten von Astro (nur bei SSR) und Sanity (nur Studio intern).
+Für statisches Hosting und lokale Studio-Nutzung ohne öffentliches Backend sind diese unkritisch.

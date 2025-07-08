@@ -1,0 +1,17 @@
+{
+	"extends": "astro/tsconfigs/strict",
+	"compilerOptions": {
+		"module": "esnext",
+		"target": "es2020",
+		"moduleResolution": "node",
+		"types": ["astro/client"],
+		"jsx": "react-jsx",
+		"allowJs": true,
+		"baseUrl": ".",
+		"paths": {
+			"@shared/*": ["../shared/types/*"]
+		}
+	},
+	"include": ["src", "env.d.ts"],
+	"exclude": ["dist", ".astro"]
+}

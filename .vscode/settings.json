@@ -6,7 +6,16 @@
 		"**/.DS_Store": true,
 		"**/Thumbs.db": true,
 		"node_modules": true,
-		".vscode": true
+		".vscode": true,
+		".astro": true,
+		"sanity/node_modules": true,
+		"astro/node_modules": true
 	},
-	"hide-files.files": ["node_modules", ".vscode"]
+	"hide-files.files": [
+		"node_modules",
+		".vscode",
+		".astro",
+		"sanity/node_modules",
+		"astro/node_modules"
+	]
 }

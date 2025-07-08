@@ -1,12 +1,6 @@
 ---
-import { sanityClient } from 'sanity:client'
-
-type Post = {
-	title: string
-	publishedAt?: string | null
-	body?: { _type: string; children: { text: unknown }[] }[] | null
-	slug?: { current: string }
-}
+import { sanityClient } from '../shared/api/sanityClient'
+import type { Post } from '../shared/types/post'
 
 const posts = await sanityClient.fetch<Post[]>(`*[_type == "post"] | order(publishedAt desc)`)
 ---
