@@ -53,7 +53,7 @@ npm run dev
 
 ## 🌐 Deployment-Strategie
 
-| Teil     | Hosting-Empfehlung                      | Bemerkung                 |
+| Teil     | Hosting                                 | Bemerkung                 |
 | -------- | --------------------------------------- | ------------------------- |
 | `astro`  | z. B. Vercel, Netlify, Cloudflare Pages | 100 % statisches HTML     |
 | `sanity` | z. B. Sanity.io, Render, Railway        | Studio getrennt deploybar |
@@ -65,8 +65,8 @@ npm run dev
 - **Astro** – moderne statische Site-Generierung
 - **Sanity** – Headless CMS
 - **@sanity/client** – manuell konfigurierter, leichter Datenzugriff
-- **React (optional)** – eingebunden über `@astrojs/react`
-- **FSD (Feature-Sliced Design)** – modularer Aufbau (optional fortsetzbar)
+- **React** – eingebunden über `@astrojs/react`
+- **FSD (Feature-Sliced Design)** – modularer Aufbau
 
 ---
 
