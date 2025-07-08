@@ -1,52 +1,86 @@
-# Astro Starter Kit: Minimal
+# ✨ Astro + Sanity Monorepo (SSG-only)
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Dieses Projekt ist ein **strukturierter Monorepo-Ansatz** für statisches Hosting mit [Astro](https://astro.build) und [Sanity Studio](https://www.sanity.io/), sauber getrennt in zwei eigenständige Applikationen:
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+- `astro/`: Frontend (SSG)
+- `sanity/`: CMS-Backend (Studio)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## 📁 Struktur
 
 ```text
 /
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+├── astro/         → Astro-Website mit statischer Generierung
+│   ├── public/
+│   ├── src/
+│   │   ├── pages/
+│   │   └── shared/api/sanityClient.ts
+│   └── astro.config.mjs
+│
+├── sanity/        → Sanity Studio (optional eigenständig hostbar)
+│   ├── schemas/
+│   └── sanity.config.ts
+│
+├── package.json   → Root mit Workspaces-Definition
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+---
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 📦 Setup
 
-Any static assets, like images, can be placed in the `public/` directory.
+### 1. Installation (Monorepo)
 
-## 🧞 Commands
+```bash
+npm install
+```
 
-All commands are run from the root of the project, from a terminal:
+### 2. Astro Dev-Server starten (nur statisch)
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+```bash
+cd astro
+npm run dev
+```
 
-## 👀 Want to learn more?
+### 3. Sanity Studio lokal starten
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+```bash
+cd sanity
+npm run dev
+```
 
-## Sicherheitshinweis
+---
 
-Bekannte `npm audit`-Warnungen in Abhängigkeiten von Astro (nur bei SSR) und Sanity (nur Studio intern).
-Für statisches Hosting und lokale Studio-Nutzung ohne öffentliches Backend sind diese unkritisch.
+## 🌐 Deployment-Strategie
+
+| Teil     | Hosting-Empfehlung                      | Bemerkung                 |
+| -------- | --------------------------------------- | ------------------------- |
+| `astro`  | z. B. Vercel, Netlify, Cloudflare Pages | 100 % statisches HTML     |
+| `sanity` | z. B. Sanity.io, Render, Railway        | Studio getrennt deploybar |
+
+---
+
+## 🔧 Technologien
+
+- **Astro** – moderne statische Site-Generierung
+- **Sanity** – Headless CMS
+- **@sanity/client** – manuell konfigurierter, leichter Datenzugriff
+- **React (optional)** – eingebunden über `@astrojs/react`
+- **FSD (Feature-Sliced Design)** – modularer Aufbau (optional fortsetzbar)
+
+---
+
+## 🔐 Sicherheitshinweis
+
+Es existieren `npm audit`-Warnungen in Abhängigkeiten von Astro (SSR-bezogen) und Sanity Studio (Editor-Komponenten).
+
+- Der **Astro-Build ist vollständig statisch**, kein SSR → **nicht betroffen**
+- Das **Studio läuft lokal oder geschützt extern** → **kein öffentliches Sicherheitsrisiko**
+
+---
+
+## 📘 Dokumentation
+
+- [Astro Docs](https://docs.astro.build)
+- [Sanity Docs](https://www.sanity.io/docs)
+- [@sanity/client API](https://www.sanity.io/docs/js-client)
